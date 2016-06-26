@@ -3,21 +3,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def google_news
+  # def google_news
 
-    require 'nokogiri'
-    require 'open-uri'
-    require 'net/http'
-    require 'OpenSSL'
+  #   require 'nokogiri'
+  #   require 'open-uri'
+  #   require 'net/http'
+  #   require 'OpenSSL'
 
-    uri = URI.parse("https://news.google.com")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    @data = http.get(uri.request_uri)
-    page = Nokogiri.HTML(@data.body)
+  #   uri = URI.parse("https://news.google.com")
+  #   http = Net::HTTP.new(uri.host, uri.port)
+  #   http.use_ssl = true
+  #   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  #   @data = http.get(uri.request_uri)
+  #   page = Nokogiri.HTML(@data.body)
 
-    render text: page
-  end
+  #   render text: page
+  # end
 
 end
