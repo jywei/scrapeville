@@ -4,7 +4,14 @@ class NewsvillesController < ApplicationController
   # GET /newsvilles
   # GET /newsvilles.json
   def index
-    @newsvilles = Newsville.all
+    uri = URI.parse("https://news.google.com")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    @data = http.get(uri.request_uri)
+
+    page = Nokogiri.HTML(@data.body)
+    @newsvilles = page.css('.esc-body')
   end
 
   # GET /newsvilles/1
