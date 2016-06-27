@@ -2,7 +2,9 @@
 
 <h1>Listing Newsvilles</h1>
 
-<table>
+<%= link_to 'New Newsville', new_newsville_path %>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -16,18 +18,18 @@
   <tbody>
     <% @newsvilles.each do |newsville| %>
       <tr>
-        <td><%= newsville.title %></td>
-        <td><%= newsville.body %></td>
-        <td><%= newsville.time %></td>
-        <td><%= newsville.image_url %></td>
-        <td><%= link_to 'Show', newsville %></td>
+        <td>
+          <a href="<%= newsville.at_css('.esc-lead-article-title a')['href']%>" target="_blank">
+            <%= newsville.at_css('.titletext').text %>
+          </a>
+        </td>
+        <td><%= newsville.at_css('.esc-lead-snippet-wrapper').text %></td>
+        <td><%= newsville.at_css('.al-attribution-timestamp').text %></td>
+        <td><%#= image_tag newsville.at_css('.esc-thumbnail-image')['src'] %></td>
         <td><%= link_to 'Edit', edit_newsville_path(newsville) %></td>
-        <td><%= link_to 'Destroy', newsville, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Newsville', new_newsville_path %>
