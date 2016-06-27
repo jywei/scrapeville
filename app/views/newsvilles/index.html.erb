@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Newsvilles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Time</th>
+      <th>Image url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @newsvilles.each do |newsville| %>
+      <tr>
+        <td><%= newsville.title %></td>
+        <td><%= newsville.body %></td>
+        <td><%= newsville.time %></td>
+        <td><%= newsville.image_url %></td>
+        <td><%= link_to 'Show', newsville %></td>
+        <td><%= link_to 'Edit', edit_newsville_path(newsville) %></td>
+        <td><%= link_to 'Destroy', newsville, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Newsville', new_newsville_path %>
