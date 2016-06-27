@@ -25,7 +25,7 @@
         </td>
         <td><%= newsville.at_css('.esc-lead-snippet-wrapper').text %></td>
         <td><%= newsville.at_css('.al-attribution-timestamp').text %></td>
-        <td><%#= image_tag newsville.at_css('.esc-thumbnail-image')['src'] %></td>
+        <td><%= image_tag newsville.at_css('.esc-thumbnail-image')['src'] %></td>
         <td><%= link_to 'Edit', edit_newsville_path(newsville) %></td>
       </tr>
     <% end %>
