@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   #   page = Nokogiri.HTML(@data.body)
 
   #   render text: page
+  #   @newsvilles = page.css('.esc-body')
   # end
 
 end

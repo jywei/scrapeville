@@ -1,22 +1,10 @@
 class NewsvillesController < ApplicationController
   before_action :set_newsville, only: [:show, :edit, :update, :destroy]
 
-  require 'nokogiri'
-  require 'open-uri'
-  require 'net/http'
-  require 'OpenSSL'
-
   # GET /newsvilles
   # GET /newsvilles.json
   def index
-    uri = URI.parse("https://news.google.com/news/")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    @data = http.get(uri.request_uri)
-
-    page = Nokogiri.HTML(@data.body)
-    @newsvilles = page.css('.esc-body')
+    @newsvilles = Newsville.all
   end
 
   # GET /newsvilles/1
@@ -81,6 +69,6 @@ class NewsvillesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsville_params
-      params.require(:newsville).permit(:title, :body, :time, :image_url)
+      params.require(:newsville).permit(:title_url, :title, :body, :time, :image_url)
     end
 end
