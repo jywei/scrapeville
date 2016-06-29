@@ -21,13 +21,17 @@ namespace :scraper do
       body = story.at_css('.esc-lead-snippet-wrapper').text
       time = story.at_css('.al-attribution-timestamp').text
 
-      unless story.at_css('.esc-thumbnail-image').nil?
-        image_url = story.at_css('.esc-thumbnail-image')['src']
+      unless story.at_css('.esc-thumbnail-image-wrapper img').nil?
+        unless story.at_css('.esc-thumbnail-image-wrapper img')['src'].nil?
+          image_url = story.at_css('.esc-thumbnail-image-wrapper img')['src']
+        else
+          image_url = story.at_css('.esc-thumbnail-image-wrapper img')['imgsrc']
+        end
       else
         image_url = "No image shown"
       end
 
-      puts " Start||| Title_Url #{title_url} Title: #{title} Body: #{body} Time: #{time} Image URL #{image_url} |||End "
+      # puts " Start||| Title_Url #{title_url} Title: #{title} Body: #{body} Time: #{time} Image URL #{image_url} |||End "
 
       Newsville.create(title_url: title_url,
                        title: title,

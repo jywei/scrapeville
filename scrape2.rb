@@ -17,8 +17,12 @@ page.css('.esc-body').each do |story|
   body = story.at_css('.esc-lead-snippet-wrapper').text
   time = story.at_css('.al-attribution-timestamp').text
 
-  unless story.at_css('.esc-thumbnail-image').nil?
-    image_url = story.at_css('.esc-thumbnail-image')['src']
+  unless story.at_css('.esc-thumbnail-image-wrapper img').nil?
+    unless story.at_css('.esc-thumbnail-image-wrapper img')['src'].nil?
+      image_url = story.at_css('.esc-thumbnail-image-wrapper img')['src']
+    else
+      image_url = story.at_css('.esc-thumbnail-image-wrapper img')['imgsrc']
+    end
   else
     image_url = "No image shown"
   end
