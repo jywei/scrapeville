@@ -2,7 +2,7 @@
 
 <p>
   <strong>Title url:</strong>
-  <%= @newsville.title_url %>
+  <%= link_to @newsville.title_url %>
 </p>
 
 <p>
@@ -22,8 +22,17 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @newsville.image_url %>
+  <%= image_tag @newsville.image_url %>
 </p>
 
 <%= link_to 'Edit', edit_newsville_path(@newsville) %> |
 <%= link_to 'Back', newsvilles_path %>
+
+<hr>
+
+<%= render @newsville.comments %>
+
+<%= simple_form_for [@newsville, Comment.new] do |comment| %>
+  <%= comment.input :body, label: "Comment Area" %>
+  <%= comment.submit "Add Comment", class: "btn btn-danger" %>
+<% end %>

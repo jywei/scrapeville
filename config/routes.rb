@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
+
   devise_for :users, controllers: { registrations: 'registrations' }
-  resources :newsvilles
+  resources :newsvilles do
+    resources :comments
+  end
   get 'pages/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
