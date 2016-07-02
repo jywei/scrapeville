@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
+  load_and_authorize_resource param_method: :my_sanitizer
+  load_and_authorize_resource through: :current_user
+  before_action :authenticate_user!
 
   # GET /comments/new
   def new
@@ -13,12 +16,10 @@ class CommentsController < ApplicationController
     @comment = @newsville.comments.create(comment_params)
     @comment.user = current_user
 
-    respond_to do |format|
-      if @comment.save
-        redirect_to @newsville, notice: 'Comment was successfully created.'
-      else
-        render @newsville
-      end
+    if @comment.save
+      redirect_to @newsville, notice: 'Comment was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @comment.newsville, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -41,5 +42,9 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:newsville_id, :body, :user_id)
+    end
+
+    def my_sanitizer
+      params.require(:comment).permit(:body)
     end
 end

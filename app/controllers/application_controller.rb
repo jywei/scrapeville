@@ -21,4 +21,9 @@ class ApplicationController < ActionController::Base
   #   @newsvilles = page.css('.esc-body')
   # end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path
+    flash[:alert] = "Sorry, you are not authorized to access this area!"
+  end
+
 end
