@@ -22,7 +22,11 @@
 
 <p>
   <strong>Image:</strong><br />
-  <%= image_tag @newsville.image_url %>
+  <% if @newsville.image_url.present? %>
+    <td><%= image_tag @newsville.image_url %></td>
+  <% else %>
+    <td><%= image_tag 'nia.png' %></td>
+  <% end %>
 </p>
 
 <%= link_to 'Back to Newsvilles', newsvilles_path, class: 'btn btn-info btn-xs' %> <hr>
