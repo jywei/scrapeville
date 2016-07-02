@@ -2,37 +2,41 @@
 
 <div class="col-md-12">
 
-<p>
-  <strong>View:</strong><br />
-  <%= link_to "Original Story", @newsville.title_url, target: "_blank" %>
-</p>
+  <div class="col-md-2">
+    <p>
+      <div class='pull-left padding'>
+        <% if @newsville.image_url.present? %>
+          <td><%= image_tag @newsville.image_url, class: "img-rounded" %></td>
+        <% else %>
+          <td><%= image_tag 'nia.png', class: "img-rounded" %></td>
+        <% end %>
+      </div>
+    </p>
+  </div>
 
-<p>
-  <strong>Headline:</strong><br />
-  <%= @newsville.title %>
-</p>
+  <div class="col-md-10">
+    <p>
+      <strong>View:</strong>
+      <%= link_to "Original Story", @newsville.title_url, target: "_blank" %>
+    </p>
 
-<p>
-  <strong>Story Summary:</strong><br />
-  <%= @newsville.body %>
-</p>
+    <p>
+      <strong>Headline:</strong>
+      <%= @newsville.title %>
+    </p>
 
-<p>
-  <strong>Posted:</strong><br />
-  <%= time_ago_in_words(@newsville.created_at) %> ago
-</p>
+    <p>
+      <strong>Story Summary:</strong>
+      <%= @newsville.body %>
+    </p>
 
-<p>
-  <strong>Image:</strong><br />
-  <% if @newsville.image_url.present? %>
-    <td><%= image_tag @newsville.image_url %></td>
-  <% else %>
-    <td><%= image_tag 'nia.png' %></td>
-  <% end %>
-</p>
+    <p>
+      <strong>Posted:</strong>
+      <%= time_ago_in_words(@newsville.created_at) %> ago
+    </p>
 
-<%= link_to 'Back to Newsvilles', newsvilles_path, class: 'btn btn-info btn-xs' %> <hr>
-
+    <%= link_to 'Back to Newsvilles', newsvilles_path, class: 'btn btn-info btn-xs' %> <hr>
+  </div>
 </div>
 
 <%= render @newsville.comments %>

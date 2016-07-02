@@ -5,3 +5,22 @@
   box-shadow: 0 0 5px #888888;
   margin: 15px;
 }
+
+.padding {
+  padding-right: 50px;
+}
+
+.form1 {
+  padding: 0px !important;
+  -moz-box-shadow: 0 0 5px #888888;
+  -webkit-box-shadow: 0 0 5px #888888;
+  box-shadow: 0 0 5px #888888;
+  margin: 5px;
+  width: 275px !important;
+}
+
+.img-rounded {
+  border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -webkit-border-radius: 10px !important;
+}
