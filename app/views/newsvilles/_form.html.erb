@@ -1,15 +1,13 @@
 <%= simple_form_for(@newsville) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title_url %>
-    <%= f.input :title %>
-    <%= f.input :body %>
-    <%= f.input :time %>
-    <%= f.input :image_url %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form form-inputs form-group">
+    <%= f.input :title_url, class: "form-control" %>
+    <%= f.input :title, class: "form-control"  %>
+    <%= f.input :body, class: "form-control"  %>
+    <%= f.input :time, class: "form-control"  %>
+    <%= f.input :image_url, class: "form-control"  %>
+    <hr>
+    <%= f.button :submit, class: "form-control"  %>
   </div>
 <% end %>

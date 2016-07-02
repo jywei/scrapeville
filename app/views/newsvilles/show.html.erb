@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="col-md-12">
+
 <p>
   <strong>View:</strong><br />
   <%= link_to "Original Story", @newsville.title_url, target: "_blank" %>
@@ -31,11 +33,13 @@
 
 <%= link_to 'Back to Newsvilles', newsvilles_path, class: 'btn btn-info btn-xs' %> <hr>
 
+</div>
+
 <%= render @newsville.comments %>
 
-<div class="col-md-12">
+<div class="col-md-12 form form-group">
   <%= simple_form_for [@newsville, Comment.new] do |comment| %>
-    <%= comment.input :body %>
+    <%= comment.input :body, label: false, placeholder: 'Share your opinion.', class: "form-control" %>
     <%= comment.submit "Add Comment", class: "btn btn-danger" %>
   <% end %>
 </div>
