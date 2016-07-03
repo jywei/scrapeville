@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
 
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 
@@ -53,5 +53,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'figaro', '~> 1.1', '>= 1.1.1'   #bundle exec figaro install
 end
 
