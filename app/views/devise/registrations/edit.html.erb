@@ -9,10 +9,19 @@
       <div class="form-inputs">
         <%= f.input :username, required: true, autofocus: true %>
         <%= f.input :email, required: true, autofocus: false %>
-        <%= f.input :password, required: true,
-                    hint: ("#{@minimum_password_length} characters
-        minimum" if @minimum_password_length) %>
-        <%= f.input :password_confirmation, required: true %>
+        <%= f.input :image, as: :file %>
+        <%= image_tag @user.image.url(:thumb), size: "100x100", class: "img-rounded" %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true %>
+        <%= f.input :password,
+                    autocomplete: "off",
+                    hint: "leave it blank if you don't want to change it",
+                    required: false %>
+        <%= f.input :password_confirmation, required: false %>
       </div>
 
       <div class="form-actions">

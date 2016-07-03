@@ -2,12 +2,20 @@
   <div class="caption-full">
     <p class="pull-right">Was posted <%= time_ago_in_words(comment.created_at) %> ago</p>
     <h4>Comment by <%= comment.user.username %></h4>
-    <p><%= comment.body %></p>
-    <% if can? :destroy, @comment %>
-      <%= link_to 'Delete Comment', [comment.newsville, comment], method: :delete,
-                                                  data: { confirm: 'Are you sure?' },
-                                                  class: "btn btn-danger btn-sm" %>
-    <% end %>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+        <%= image_tag comment.user.image.url(:thumb), size: "100x100", class: "img-rounded" %>
+      </div>
+      <div class="col-md-10">
+        <p><%= comment.body %></p>
+        <% if can? :destroy, comment %>
+          <%= link_to 'Delete Comment', [comment.newsville, comment], method: :delete,
+                                                    data: { confirm: 'Are you sure?' },
+                                                    class: "btn btn-danger btn-sm" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

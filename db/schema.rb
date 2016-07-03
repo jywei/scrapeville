@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701140254) do
+ActiveRecord::Schema.define(version: 20160703141117) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "newsville_id"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 20160701140254) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

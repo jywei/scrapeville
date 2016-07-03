@@ -33,6 +33,10 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 
 gem 'cancancan', '~> 1.15'
 
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+
+gem 'aws-sdk', '< 2.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
