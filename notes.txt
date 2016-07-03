@@ -38,13 +38,3 @@ image = .esc-thumbnail-image
 </table>
 
 <br>
-
-
-
-
-
-Access Key ID:
-AKIAJRF6LEMNYE3MVOIA
-
-Secret Access Key:
-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
