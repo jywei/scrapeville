@@ -43,6 +43,10 @@ gem 'will_paginate', '~> 3.1'
 
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
+gem 'awesome_rails_console'
+
+gem 'pry-byebug'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -67,3 +71,12 @@ group :development do
   gem 'figaro', '~> 1.1', '>= 1.1.1'   #bundle exec figaro install
 end
 
+
+# Please clean up duplicated gems if any.
+# Feel free to remove gems that you don't want to use or if they conflict with other gem dependencies. (you might need to update .pryrc also)
+group :development, :test do
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+end
