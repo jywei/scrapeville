@@ -2,7 +2,13 @@
 
 <h3>Welcome To Newsville</h3>
 
-<%= will_paginate @newsvilles %>
+<div class='text-center'>
+  <%= will_paginate @newsvilles, renderer: BootstrapPagination::Rails %> 
+</div>
+
+<%= link_to 'New Newsville', new_newsville_path %>
+
+<br />
 
 <br>
 
@@ -24,7 +30,10 @@
         <td><%= link_to "Original Story", newsville.title_url, :target => "_blank" %></td>
         <td><%= newsville.title %></td>
         <td><%= newsville.body %></td>
-        <td><%= newsville.time %></td>
+        <td>
+          <%= newsville.created_at.strftime("%A, %d %b %Y %l:%M %p") %>
+          <!-- <%#= time_ago_in_words(newsville.created_at) %> -->
+        </td>
         <% if newsville.image_url.present? %>
           <td><%= image_tag newsville.image_url %></td> <% else %>
           <td><%= image_tag 'nia.png', size: "150x150" %></td>
@@ -43,8 +52,8 @@
   </tbody>
 </table>
 
-<%= will_paginate @newsvilles %>
+<div class='text-center'>
+  <%= will_paginate @newsvilles, renderer: BootstrapPagination::Rails %> 
+</div>
 
 <br>
-
-<%= link_to 'New Newsville', new_newsville_path %>
